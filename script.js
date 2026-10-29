@@ -22,6 +22,7 @@ const MODELS = [
     ideal: 'Consultórios e salas compactas',
     tagline: 'Presença discreta e contínua para espaços compactos.',
     area: 25,
+    price: 169,
     specs: [
       ['Cobertura', 'até 25 m²'],
       ['Aspersão', 'Borrifação'],
@@ -35,6 +36,7 @@ const MODELS = [
     ideal: 'Recepções de clínicas',
     tagline: 'Controle preciso com nano nebulização em formato compacto.',
     area: 45,
+    price: 269,
     featured: true,
     badge: 'Mais indicado para recepção',
     specs: [
@@ -50,6 +52,7 @@ const MODELS = [
     ideal: 'Clínicas amplas e áreas integradas',
     tagline: 'Aromatização inteligente via app, com até 5 rotinas programadas.',
     area: 160,
+    price: 449,
     specs: [
       ['Cobertura', 'até 160 m²'],
       ['Aspersão', 'Nano nebulização'],
@@ -75,6 +78,11 @@ function renderModels() {
       <span class="model__ideal">${m.ideal}</span>
       <h3><small>Senses</small>${m.name}</h3>
       <p class="model__tagline">${m.tagline}</p>
+      <div class="model__price">
+        <small>Assinatura mensal</small>
+        <div><span class="model__currency">R$</span><strong>${m.price}</strong><span class="model__per">/mês</span></div>
+        <em>Equipamento + essências + garantia eterna</em>
+      </div>
       <div class="model__gauge">
         <div class="model__gauge-top">
           <strong>${m.area}<small>m²</small></strong>
@@ -92,7 +100,7 @@ function renderModels() {
     </article>`).join('');
 
   chips.insertAdjacentHTML('afterbegin', MODELS.map((m) => `
-    <label class="chip"><input type="radio" name="modelo" value="Senses ${m.name}" data-model="${m.id}"><span>${m.name} · ${m.area} m²</span></label>`).join(''));
+    <label class="chip"><input type="radio" name="modelo" value="Senses ${m.name} (R$${m.price}/mês)" data-model="${m.id}"><span>${m.name} · R$${m.price}/mês</span></label>`).join(''));
 
   list.addEventListener('click', (e) => {
     const btn = e.target.closest('[data-model]');
